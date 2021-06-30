@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+home:
+    path: /home
+    controller: App\Controller\PublicController::home
+
+login: 
+    path: /login
+    controller: App\Controller\PublicController::login
+about-us: 
+    path: /about
+    controller: App\Controller\PublicController::about
+catalogo: 
+    path: /catalogo
+    controller: App\Controller\CatalogoController::index
+sign-in: 
+    path: /sign-in
+    controller: App\Controller\PublicController::signin

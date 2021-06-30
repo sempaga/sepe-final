@@ -1,27 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ficha{% endblock %}
+{% block title %}Ficha
+{% endblock %}
 
 {% block body %}
 
-  <h1>Ficha del libro </h1>
+	<h1>Ficha del libro
+	</h1>
 
-  <p>Título: {{ fondo.titulo }}</p>
-  <p>ISBN: {{ fondo.isbn }}</p>
-  <p>Editorial: {{ fondo.editorial.nombre }}</p>
+	<p>Título:
+		{{ fondo.titulo }}</p>
+	<p>ISBN:
+		{{ fondo.isbn }}</p>
+	<p>Editorial:
+		{{ fondo.editorial.nombre }}</p>
 
-  <p>Autor principal: {{ fondo.autores[0].nombre | upper }} ( {{ fondo.autores[0].tipo }} )</p>
+	<p>Autor principal:
+		{{ fondo.autores[0].nombre | upper }}
+		(
+		{{ fondo.autores[0].tipo }}
+		)</p>
 
 
-  <p>Autores: 
-  {% for autor in fondo.autores %} 
-    {% if not loop.first %}
-      <div>Nombre: {{ autor.nombre }} </div>
-      <div>Tipo: {{ autor.tipo}} </div>
-    {% endif %}
-  {% else %} 
-    <div>Anónimo / Desconocido</div>
-  {% endfor %}
-  </p>
+	<p>Autores:
+		{% for autor in fondo.autores %}
+			{% if not loop.first %}
+				<div>Nombre:
+					{{ autor.nombre }}
+				</div>
+				<div>Tipo:
+					{{ autor.tipo}}
+				</div>
+			{% endif %}
+		{% else %}
+			<div>Anónimo / Desconocido</div>
+		{% endfor %}
+	</p>
+	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+		<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+		<label class="btn btn-outline-primary" for="btncheck1">
+			<a class="nav-link" href="{{path('catalogo')}}">Volver a Catalogo</a>
+		</label>
+
+	</div>
 
 {% endblock %}

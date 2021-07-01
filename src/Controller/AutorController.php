@@ -7,12 +7,13 @@ use App\Entity\Editorial;
 use App\Entity\Fondo;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AutorController extends AbstractController
 {
-    #[Route('/autor', name: 'autor')]
+    
     public function index(EntityManagerInterface $em): Response
     {   
         $autor = new Autor();
@@ -59,5 +60,29 @@ class AutorController extends AbstractController
             'controller_name' => 'AutorController',
             'autores' => $autores
         ]);
+    }
+
+    public function new(): Response
+    {
+        return $this->render('autor/new.html.twig');
+    }
+
+    public function create(Request $request, EntityManagerInterface $em): Response
+    {
+        //1) recibir datos
+        $nombre = $request->request->get('nombre'); //le pasas en get el argumento del parametro name del html
+        $tipo =$request->request->get('tipo');
+        //2) dar de alta en bbdd
+            //1) crear objeto autor
+            $autor= new Autor;
+            //2) dar el nombre y tipo al autor usando los datos recibidos
+            $autor->setNombre($nombre);
+            $autor->setTipo($tipo);
+
+            //3)actualizar bbdd
+            $em->persist($autor);
+            $em->flush();
+        //3) redirigir al formulario o lo que se pida despues
+        return $this->redirectToRoute('new-autor');
     }
 }

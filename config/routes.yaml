@@ -2,7 +2,7 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 home:
-    path: /home
+    path: /
     controller: App\Controller\PublicController::home
 
 login: 
@@ -11,9 +11,28 @@ login:
 about-us: 
     path: /about
     controller: App\Controller\PublicController::about
-catalogo: 
-    path: /catalogo
-    controller: App\Controller\CatalogoController::index
 sign-in: 
     path: /sign-in
     controller: App\Controller\PublicController::signin
+catalogo: 
+    path: /catalogo
+    controller: App\Controller\CatalogoController::index
+ver-catalogo:
+    path: /catalago/ver
+    controller: App\Controller\CatalogoController::ver
+modificar-catalogo:
+    path: /catalago/modificar
+    controller: App\Controller\CatalogoController::modificar
+crear-editorial-catalogo:
+    path: /catalago/cce
+    controller: App\Controller\CatalogoController::cce
+
+autor:
+    path: /autor
+    controller: App\Controller\AutorController::index
+new-autor:
+    path: /new
+    controller: App\Controller\AutorController::new
+create:
+    path: /create
+    controller: App\Controller\AutorController::create

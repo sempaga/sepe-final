@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CatalogoController extends AbstractController
 {
-    #[Route('/catalogo/libros', name: 'catalogo')]
+    
     public function index(FondoRepository $fondoRepository): Response
     {
         //$fondos = Catalogo::$fondos;
@@ -29,7 +29,7 @@ class CatalogoController extends AbstractController
         ]);
     }
 
-    #[Route('/catalogo/ver/{id}', name: 'catalogo_ver')]
+ 
     public function ver(FondoRepository $fondoRepository, $id): Response
     {
         $fondo = $fondoRepository->find($id);
@@ -38,7 +38,7 @@ class CatalogoController extends AbstractController
         ]);
     }
 
-    #[Route('/catalogo/crear-con-editorial', name: 'catalogo_crear-con-editorial')]
+   
     public function cce(
         EditorialRepository $editorialRepository,
         AutorRepository $autorRepository,
@@ -77,7 +77,7 @@ class CatalogoController extends AbstractController
         ]);
     }
 
-    #[Route('/catalogo/modificar', name: 'catalogo_modificar')]
+   
     public function modificar(
         FondoRepository $fondoRepository,
         EntityManagerInterface $em
